@@ -1,9 +1,43 @@
 body {
+  font-family: 'Roboto', sans-serif;
   height: 95vh;
   width: 95;
-  display: flex;
+  /*display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  color: green;
+  flex-direction: column;*/
+}
+
+h1 {
+  text-align: center;
+}
+
+#start {
+  height: 42px;
+  width: 160px;
+  border-radius: 8px;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+#start {
+  text-align: center;
+}
+
+.scores {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  border: 1px solid darkgreen;
 }

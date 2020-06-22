@@ -3,15 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
 
-    <script defer src="./js/script.js"></script>
-
-    <title>Snake Game</title>
+    <title>Jogo da cobrinha</title>
   </head>
   <body>
-    <h1>SNAKE GAME!</h1>
-    <canvas id="snake" width="512px" height="512px"></canvas>
+    <header>
+      <h1>Jogo da Cobrinha!</h1>
+      <div class="flex-row">
+        <div class="scores">
+          <label for="nickName">Apelido:</label>
+          <input id="nickName" type="text" />
+        </div>
+        <div class="scores">
+          <div>Pontos: <span id="score">0</span></div>
+          <div>Bônus: <span id="score">0</span></div>
+          <div>Dificuldade: <span id="difficulty">Easy</span></div>
+        </div>
+      </div>
+
+      <span id="start">Iniciar o jogo</span>
+    </header>
+
+    <main>
+      <div class="flex-row">
+        <div>
+          <canvas id="snake" width="512px" height="512px"></canvas>
+        </div>
+        <div>
+          scores
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      main by Mauricio Viana
+    </footer>
+    <script defer src="./js/Script.js"></script>
+    <script defer src="./js/SnakeGame.js"></script>
   </body>
 </html>
