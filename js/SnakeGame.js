@@ -1,8 +1,10 @@
+let start = document.getElementById('start');
 let canvas = document.getElementById('snake');
 let context = canvas.getContext('2d');
 let box = 32;
 let direction = 'right';
 let score = document.getElementById('score');
+let difficulty = document.getElementById('difficulty');
 let isCollision = false;
 
 let snake = [];
@@ -41,14 +43,12 @@ function snakeDirection(event) {
 }
 
 function borderCollision() {
-  console.log('x:' + snake[0].x + ' y:' + snake[0].y);
   if (
     (snake[0].x > 15 * box && direction === 'right') ||
     (snake[0].x < 0 && direction === 'left') ||
     (snake[0].y > 15 * box && direction === 'down') ||
     (snake[0].y < 0 && direction === 'up')
   ) {
-    console.log('x:' + snake[0].x + ' y:' + snake[0].y);
     isCollision = true;
   }
 }
@@ -64,6 +64,18 @@ function snakeCollision() {
 function drawFood() {
   context.fillStyle = 'red';
   context.fillRect(food.x, food.y, box, box);
+}
+
+function nivelDifficulty() {
+  function upNivel(newSpeedy, description) {
+    difficulty.textContent = description;
+    clearInterval(game);
+    game = setInterval(startedGame, newSpeedy);
+  }
+
+  if (snake.length === 6) upNivel(160, 'Medium');
+  if (snake.length === 14) upNivel(110, 'Hard');
+  if (snake.length === 28) upNivel(90, 'Expert');
 }
 
 function startedGame() {
@@ -95,11 +107,17 @@ function startedGame() {
   };
 
   snake.unshift(newHead);
+
+  nivelDifficulty();
   if (isCollision) {
     clearInterval(game);
-    alert('Game Over :(');
-    return;
   }
 }
 
-const game = setInterval(startedGame, 100);
+let game = null;
+function newGame() {
+  game = setInterval(startedGame, 200);
+}
+
+startedGame();
+start.addEventListener('click', newGame);
