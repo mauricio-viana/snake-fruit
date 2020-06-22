@@ -1,14 +1,15 @@
 let canvas = document.getElementById('snake');
 let context = canvas.getContext('2d');
 let box = 32;
-let snake = [];
+let direction = 'right';
+let score = document.getElementById('score');
+let isCollision = false;
 
+let snake = [];
 snake[0] = {
   x: 8 * box,
   y: 8 * box,
 };
-
-let direction = 'right';
 
 let food = {
   x: Math.floor(Math.random() * 15 + 1) * box,
@@ -27,13 +28,37 @@ function createSnake() {
   }
 }
 
-document.addEventListener('keydown', update);
+document.addEventListener('keydown', snakeDirection);
 
-function update(event) {
+function snakeDirection(event) {
+  borderCollision();
+  snakeCollision();
+
   if (event.keyCode === 37 && direction !== 'right') direction = 'left';
   if (event.keyCode === 38 && direction !== 'down') direction = 'up';
   if (event.keyCode === 39 && direction !== 'left') direction = 'right';
   if (event.keyCode === 40 && direction !== 'up') direction = 'down';
+}
+
+function borderCollision() {
+  console.log('x:' + snake[0].x + ' y:' + snake[0].y);
+  if (
+    (snake[0].x > 15 * box && direction === 'right') ||
+    (snake[0].x < 0 && direction === 'left') ||
+    (snake[0].y > 15 * box && direction === 'down') ||
+    (snake[0].y < 0 && direction === 'up')
+  ) {
+    console.log('x:' + snake[0].x + ' y:' + snake[0].y);
+    isCollision = true;
+  }
+}
+
+function snakeCollision() {
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+      isCollision = true;
+    }
+  }
 }
 
 function drawFood() {
@@ -42,18 +67,8 @@ function drawFood() {
 }
 
 function startedGame() {
-  if (snake[0].x > 15 * box && direction === 'right') snake[0].x = 0;
-  if (snake[0].x < 0 && direction === 'left') snake[0].x = 16 * box;
-  if (snake[0].y > 15 * box && direction === 'down') snake[0].y = 0;
-  if (snake[0].y < 0 && direction === 'up') snake[0].y = 16 * box;
-
-  for (let i = 1; i < snake.length; i++) {
-    if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
-      clearInterval(game);
-      alert('Game Over :(');
-    }
-  }
-
+  borderCollision();
+  snakeCollision();
   createBG();
   createSnake();
   drawFood();
@@ -68,6 +83,7 @@ function startedGame() {
 
   if (snakeX != food.x || snakeY != food.y) {
     snake.pop();
+    score.textContent = snake.length;
   } else {
     food.x = Math.floor(Math.random() * 15 + 1) * box;
     food.y = Math.floor(Math.random() * 15 + 1) * box;
@@ -79,6 +95,11 @@ function startedGame() {
   };
 
   snake.unshift(newHead);
+  if (isCollision) {
+    clearInterval(game);
+    alert('Game Over :(');
+    return;
+  }
 }
 
-let game = setInterval(startedGame, 100);
+const game = setInterval(startedGame, 100);
