@@ -1,43 +1,122 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  height: 95vh;
-  width: 95;
-  /*display: flex;
-  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  flex-direction: column;*/
+  flex-direction: column;
+  position: fixed;
 }
 
 h1 {
   text-align: center;
 }
 
-#start {
-  height: 42px;
-  width: 160px;
-  border-radius: 8px;
-  background-color: orange;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .flex-row {
   display: flex;
-  justify-content: center;
   flex-direction: row;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  width: 940px;
+  margin-top: 40px;
 }
 
-#start {
-  text-align: center;
+.nick-name {
+  padding: 10px 0px 5px 100px;
+  font-weight: bold;
+}
+
+.nick-name input {
+  margin-left: 20px;
+  height: 20px;
 }
 
 .scores {
+  padding: 5px 100px 5px 0px;
+}
+
+.scores div {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.scores span {
+  width: 50px;
+  text-align: center;
+}
+
+.content-start-game {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
+}
+
+#startGame {
+  width: 350px;
+  height: 32px;
+  padding: 10px 0 0 0;
+  background: orange;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+#startGame:hover {
+  background: orangered;
+  border: 3px solid;
 }
 
 canvas {
-  border: 1px solid darkgreen;
+  border: 2px solid darkgreen;
+}
+
+#modal {
+  color: black;
+  background-color: #b8d6c1ef;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1000ms;
+}
+
+#modal.hide {
+  display: none;
+}
+
+#modal .content {
+  width: 500px;
+}
+
+#modal form div {
+  display: flex;
+  align-content: center;
+  margin: 30px 0;
+}
+
+#modal form span {
+  flex: 1;
+  background-color: green;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+#modal form input {
+  width: 100px;
+  background-color: lightgreen;
+  padding: 10px;
+  font-size: 18px;
+  border-style: none;
+  border-radius: 0 10px 10px 0;
 }

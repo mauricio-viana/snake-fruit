@@ -1,11 +1,11 @@
-let buttonStartGame = document.getElementById('startGame');
-let canvas = document.getElementById('snake');
-let context = canvas.getContext('2d');
-let box = 32;
+const buttonStartGame = document.getElementById('startGame');
+const canvas = document.getElementById('snake');
+const context = canvas.getContext('2d');
+const box = 32;
+const score = document.getElementById('score');
+const bonus = document.getElementById('bonus');
+const difficulty = document.getElementById('difficulty');
 let direction = 'right';
-let score = document.getElementById('score');
-let bonus = document.getElementById('bonus');
-let difficulty = document.getElementById('difficulty');
 let isCollision = false;
 
 let snake = [];
@@ -136,6 +136,12 @@ function startedGame() {
   nivelDifficulty();
   if (isCollision) {
     clearInterval(game);
+
+    recordScore({
+      bonus: bonus.textContent,
+      score: score.textContent,
+      difficulty: difficulty.textContent,
+    });
   }
 }
 
