@@ -1,9 +1,10 @@
-let start = document.getElementById('start');
+let buttonStartGame = document.getElementById('startGame');
 let canvas = document.getElementById('snake');
 let context = canvas.getContext('2d');
 let box = 32;
 let direction = 'right';
 let score = document.getElementById('score');
+let bonus = document.getElementById('bonus');
 let difficulty = document.getElementById('difficulty');
 let isCollision = false;
 
@@ -14,6 +15,8 @@ snake[0] = {
 };
 
 let food = {
+  isBonus: false,
+  point: 0,
   x: Math.floor(Math.random() * 15 + 1) * box,
   y: Math.floor(Math.random() * 15 + 1) * box,
 };
@@ -62,7 +65,16 @@ function snakeCollision() {
 }
 
 function drawFood() {
-  context.fillStyle = 'red';
+  const color =
+    food.point === 0
+      ? 'red'
+      : food.point === 2
+      ? 'yellow'
+      : food.point === 3
+      ? 'orange'
+      : 'blue';
+
+  context.fillStyle = color;
   context.fillRect(food.x, food.y, box, box);
 }
 
@@ -95,10 +107,23 @@ function startedGame() {
 
   if (snakeX != food.x || snakeY != food.y) {
     snake.pop();
-    score.textContent = snake.length;
   } else {
+    score.textContent = snake.length;
+    bonus.textContent = food.isBonus
+      ? +bonus.textContent + food.point
+      : bonus.textContent;
+
     food.x = Math.floor(Math.random() * 15 + 1) * box;
     food.y = Math.floor(Math.random() * 15 + 1) * box;
+
+    if (snake.length % 6 === 0) {
+      const newPoint = Math.round(Math.random() * 4);
+      food.point = newPoint <= 1 ? 2 : newPoint;
+      food.isBonus = true;
+    } else {
+      food.point = 0;
+      food.isBonus = false;
+    }
   }
 
   let newHead = {
@@ -120,4 +145,4 @@ function newGame() {
 }
 
 startedGame();
-start.addEventListener('click', newGame);
+buttonStartGame.addEventListener('click', newGame);
