@@ -7,33 +7,33 @@
     
     <link rel="stylesheet" href="./css/style.css" />
 
-    <title>Jogo da cobrinha</title>
+    <title>Snake Game</title>
   </head>
   <body>
     <header>
-      <h1>Jogo da Cobrinha!</h1>
+      <h1>Snake Game</h1>
       <div class="flex-row">
         <div class="nick-name">
           <label for="nickName">Apelido:</label>
-          <input id="nickName" type="text" maxlength="20" />
+          <input id="nickName" type="text" maxlength="8" />
         </div>
         <div class="scores">
           <div>
-            <strong>Pontos:</strong>
+            <span>Score:</span>
             <span id="score">0</span>
           </div>
           <div>
-            <strong>Bônus:</strong>
+            <span>Bonus:</span>
             <span id="bonus">0</span>
           </div>
           <div>
-            <strong>Dificuldade:</strong>
+            <span>Difficulty:</span>
             <span id="difficulty">Easy</span>
           </div>
         </div>
       </div>
       <div class="content-start-game">
-        <span id="startGame">Iniciar o jogo</span>
+        <span id="startGame">Start game</span>
       </div>
     </header>
 
@@ -42,14 +42,30 @@
         <div>
           <canvas id="snake" width="512px" height="512px"></canvas>
         </div>
-        <div>
-          scores
+        <div class="flex-row-score">
+          <div>
+            <h3>Rank</h3>
+            <span>1</span>
+            <span>2</span>
+          </div>
+
+          <div>
+            <h3>Score</h3>
+            <span>2.500</span>
+            <span>2.252</span>
+          </div>
+
+          <div>
+            <h3>Name</h3>
+            <span>Rayra</span>
+            <span>Mauricio</span>
+          </div>
         </div>
       </div>
     </main>
 
     <footer>
-      main by Mauricio Viana
+      Main by Mauricio Viana
     </footer>
     <script defer src="./js/script.js"></script>
     <script defer src="./js/snakeGame.js"></script>
@@ -57,9 +73,7 @@
 
   <div id="modal" class="hide">
     <div class="content">
-      <div class="header">
-        <h1>Pontuação total</h1>
-      </div>
+      <h1>Pontuação total</h1>
       <form>
         <div>
           <span>Total pontos</span>
@@ -78,7 +92,7 @@
           <input type="text" disabled />
         </div>
 
-        <button id="restart">Jogue novamente</button>
+        <button id="restart" onclick="saveRecordScore()">Jogue novamente</button>
     
         </div>
       </form>
