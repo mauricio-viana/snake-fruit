@@ -28,7 +28,7 @@ function createBG() {
 
 function createSnake() {
   for (let i = 0; i < snake.length; i++) {
-    context.fillStyle = 'green';
+    context.fillStyle = i === 0 ? 'darkgreen' : 'green';
     context.fillRect(snake[i].x, snake[i].y, box, box);
   }
 }
@@ -117,8 +117,8 @@ function startedGame() {
     food.y = Math.floor(Math.random() * 15 + 1) * box;
 
     if (snake.length % 6 === 0) {
-      const newPoint = Math.round(Math.random() * 4);
-      food.point = newPoint <= 1 ? 2 : newPoint;
+      const newPoint = Math.max(2, Math.round(Math.random() * 4));
+      food.point = newPoint;
       food.isBonus = true;
     } else {
       food.point = 0;
