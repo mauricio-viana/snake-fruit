@@ -28,8 +28,14 @@ header h1 {
 }
 
 .nick-name input {
+  width: 150px;
   margin-left: 20px;
   height: 20px;
+  border: 4px solid white;
+  background-color: rgb(84, 84, 88);
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-align: center;
 }
 
 .scores {
@@ -76,6 +82,27 @@ canvas {
   border: 2px solid darkgreen;
 }
 
+.flex-row-score {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 40px;
+  padding: 0 10px;
+  border: 1px solid lightgray;
+  color: lightgray;
+}
+
+.flex-row-score div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.flex-row-score span {
+  margin-top: 16px;
+}
+
 #modal {
   color: black;
   background-color: #b8d6c1ef;
@@ -97,6 +124,10 @@ canvas {
   width: 500px;
 }
 
+#modal .content h1 {
+  text-align: center;
+}
+
 #modal form div {
   display: flex;
   align-content: center;
@@ -109,37 +140,20 @@ canvas {
   padding: 10px;
   font-size: 18px;
   text-align: center;
-  border-radius: 10px 0 0 10px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
 }
 
 #modal form input {
-  width: 100px;
+  width: 120px;
   background-color: lightgreen;
   padding: 10px;
   font-size: 18px;
-  border-style: none;
-  border-radius: 0 10px 10px 0;
-}
+  border: 2px solid black;
 
-.flex-row-score {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 40px;
-  padding: 0 10px;
-  border: 1px solid lightgray;
-  color: lightgray;
-}
-
-.flex-row-score div {
-  display: flex;
-  flex-direction: column;
+  font-family: 'Press Start 2P', cursive;
   text-align: center;
-}
-
-.flex-row-score span {
-  margin-top: 16px;
 }
 
 footer {

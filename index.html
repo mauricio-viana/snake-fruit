@@ -15,7 +15,7 @@
       <div class="flex-row">
         <div class="nick-name">
           <label for="nickName">Apelido:</label>
-          <input id="nickName" type="text" maxlength="8" />
+          <input id="nickName" type="text" maxlength="8" autofocus />
         </div>
         <div class="scores">
           <div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="content-start-game">
-        <span id="startGame">Start game</span>
+        <span id="startGame" >Start game</span>
       </div>
     </header>
 
@@ -73,23 +73,23 @@
 
   <div id="modal" class="hide">
     <div class="content">
-      <h1>Pontuação total</h1>
+      <h1>HIGH SCORE</h1>
       <form>
         <div>
-          <span>Total pontos</span>
+          <span>Score</span>
           <input name="maxPoint" type="text" disabled />
         </div>
         <div>
-          <span>Bonus máximo</span>
+          <span>Maximum bonus</span>
           <input name="maxBonus" type="text" disabled />
         </div>
         <div>
-          <span>Dificuldade</span>
-          <input name="" type="text" disabled />
+          <span>Difficulty</span>
+          <input name="maxDifficulty" type="text" disabled />
         </div>
         <div>
-          <span>Pontuação total </span>
-          <input type="text" disabled />
+          <span>Total</span>
+          <input  name="maxTotal" type="text" disabled />
         </div>
 
         <button id="restart" onclick="saveRecordScore()">Jogue novamente</button>
